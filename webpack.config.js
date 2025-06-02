@@ -1,44 +1,56 @@
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
-const htmlWebpackPlugin = new HtmlWebPackPlugin({
-  template: "./src/index.html",
-  filename: "./index.html"
-});
 
 module.exports = {
+  entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
-    filename: 'main_bundle.js'
-  },
-  resolve: {
-    alias: {
-      js$: path.resolve(__dirname, './main.js'),
-      html$: path.resolve(__dirname,'./src/index.html'), 
-    }
+    filename: 'bundle.js'
   },
   module: {
     rules: [
-  {
-    test: /\.woff(2)?(\?v=[0-9]+\.[0-9]+\.[0-9]+)?$/,
-    loader: 'url-loader?limit=10000&minetype=application/font-woff&name=fonts/[name].[ext]'
-},    
       {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
+          loader: 'babel-loader'
         }
       },
-
-            {
+      {
         test: /\.(scss|css)$/,
-        loader:"style-loader!css-loader!sass-loader"
-      },
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+              implementation: require('sass'),
+              sassOptions: {
+                includePaths: ['css']
+              }
+            }
+          }
+        ]
+      }
     ]
   },
   devServer: {
-    historyApiFallback: true,
+    static: {
+      directory: path.join(__dirname, 'dist'),
+    },
+    compress: true,
+    port: 8080,
+    hot: true
   },
-  plugins: [htmlWebpackPlugin]
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html'
+    })
+  ]
 };

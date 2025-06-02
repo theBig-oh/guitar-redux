@@ -1,6 +1,8 @@
 {
-    "presets": [
-      ["env", {
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
         "targets": {
           "browsers": [
             ">0.25%",
@@ -8,7 +10,9 @@
             "not op_mini all"
           ]
         }
-      }], "react"
+      }
     ],
-  "plugins": ["transform-class-properties"]
+    "@babel/preset-react"
+  ],
+  "plugins": ["@babel/plugin-proposal-class-properties"]
 }
