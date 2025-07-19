@@ -1,9 +1,11 @@
-### Pure JS with Webpack
+# Guitar Tools - Vanilla JS Edition
 
-Made this for people who just want a pure javascript coding experience. 
+Another variation of my original web app. 
 
-Powered by Webpack, SASS, and Babel. 
+Currently, the harmonizer visualizer works on desktop. Still need to create a mobile version for it. 
 
-Simpily clone it, then run npm install, then npm start. 
+If want to run locally,
+ - npm install
+ - npm run start
 
-**Can activate react by simply importing it. 
+ 
