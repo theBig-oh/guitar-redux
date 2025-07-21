@@ -448,6 +448,9 @@ $halfPad: 0.5rem;
         position: relative;
         height: 460px;        
 
+        @media (min-width: 1024px) and (min-height: 768px) {
+            height: 310px;
+        }
 
         $patternSize: 2px;
         $colorGrad: rgba(0,0,0,0.25);
@@ -497,6 +500,20 @@ $halfPad: 0.5rem;
             max-width: 705px;
             transition: all ease 0.4s;
 
+            @media (min-width: 1024px) and (min-height: 768px) {
+                max-width: 330px;
+                top: 100px;
+                left: 265px;
+            }
+
+            @media (min-width: 1512px) {
+                max-width: 535px;
+                left: 416px;
+            }
+
+            @media (min-width: 1920px) {
+                max-width: 705px;
+            }
             .ratioBlock {
                 border-bottom: 2px dashed rgb(233, 23, 23);
                 border-left: 3px solid;
